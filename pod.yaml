@@ -6,6 +6,12 @@ metadata:
     run: lab-app
   name: lab-app
 spec:
+  serviceAccountName: argo-app
   containers:
   - image: nginx
     name: lab-app
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argo-app
