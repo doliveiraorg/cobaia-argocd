@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: lab-app
+  name: lab-app
+spec:
+  containers:
+  - image: nginx
+    name: lab-app
