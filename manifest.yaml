@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cobaia-argocd
+  name: cobaia-argocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cobaia-argocd
+  template:
+    metadata:
+      labels:
+        app: cobaia-argocd
+    spec:
+      containers:
+      - image: registry.redhat.io/ubi8/httpd-24@sha256:a20cdb120d70cba18f19f7dc4790dffe8d45bac97ad72f65acc62a9a15771c05
+        name: httpd-24
