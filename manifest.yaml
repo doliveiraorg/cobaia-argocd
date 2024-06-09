@@ -16,5 +16,5 @@ spec:
         app: cobaia-argocd
     spec:
       containers:
-      - image: registry.redhat.io/ubi8/httpd-24@sha256:a20cdb120d70cba18f19f7dc4790dffe8d45bac97ad72f65acc62a9a15771c05
+      - image: httpd
         name: httpd-24
