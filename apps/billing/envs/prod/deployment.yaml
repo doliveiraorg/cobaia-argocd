@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: billing-prod
+  name: billing-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: billing-prod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: billing-prod
+    spec:
+      containers:
+      - image: quay.io/fedora/httpd-24-micro
+        name: httpd-24-micro
+        resources: {}
+status: {}
