@@ -12,16 +12,16 @@ spec:
       repoURL: https://github.com/doliveiraorg/cobaia-argocd.git
       revision: HEAD
       directories:
-      - path: apps/billing/envs/
+      - path: apps/billing/envs/*
   template:
     metadata:
-      name: 'teste'
+      name: '{{index .path.segments 1}}-{{.path.basename}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/doliveiraorg/cobaia-argocd.git
         targetRevision: HEAD
-        path: 'apps/billing/envs/prod'
+        path: 'apps/billing/envs/{{ .path.basename }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: 'deployment'
