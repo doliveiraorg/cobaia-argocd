@@ -15,6 +15,7 @@ spec:
       labels:
         app: billing-prod
     spec:
+      serviceAccountName: billing-prod
       containers:
       - image: quay.io/fedora/httpd-24-micro
         name: httpd-24-micro
