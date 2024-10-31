@@ -6,7 +6,6 @@ metadata:
   labels:
     app: billing-prod
   name: billing-prod
-  namespace: default
 spec:
   host: billing-prod-default.apps.diolivei.vmware.tamlab.rdu2.redhat.com
   port:
