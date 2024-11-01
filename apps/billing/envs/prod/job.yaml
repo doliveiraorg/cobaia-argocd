@@ -1,9 +1,28 @@
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: health-check-pre-job
   annotations:
     argocd.argoproj.io/hook: PreSync
+    #argocd.argoproj.io/hook-delete-policy: HookFailed
+spec:
+  template:
+    spec:
+      containers:
+        - name: health-check
+          image: curlimages/curl
+          command: ["/bin/sh", "-c"]
+          args: ["slepp 15; echo 'Demo Application is accessible'; exit 0"]
+      restartPolicy: Never
+  backoffLimit: 0
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: health-check-post-job
+  annotations:
+    argocd.argoproj.io/hook: PostSync
     #argocd.argoproj.io/hook-delete-policy: HookFailed
 spec:
   template:
