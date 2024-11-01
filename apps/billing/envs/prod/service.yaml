@@ -4,8 +4,6 @@ metadata:
   labels:
     app: billing-prod
   name: billing-prod
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
 spec:
   ports:
   - port: 8080
