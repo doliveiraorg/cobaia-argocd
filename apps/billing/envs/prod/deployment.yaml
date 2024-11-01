@@ -5,7 +5,7 @@ metadata:
     app: billing-prod
   name: billing-prod
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: billing-prod
