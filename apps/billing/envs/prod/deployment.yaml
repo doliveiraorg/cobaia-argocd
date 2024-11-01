@@ -17,5 +17,5 @@ spec:
     spec:
       serviceAccountName: billing-prod
       containers:
-      - image: quay.io/fedora/httpd-24-micro
+      - image: argoproj/rollouts-demo:blue
         name: httpd-24-micro
