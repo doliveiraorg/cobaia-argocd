@@ -12,6 +12,6 @@ spec:
         - name: health-check
           image: curlimages/curl
           command: ["/bin/sh", "-c"]
-          args: ["slepp 15'; echo 'Demo Application is accessible'; exit 0"]
+          args: ["slepp 15; echo 'Demo Application is accessible'; exit 0"]
       restartPolicy: Never
   backoffLimit: 0
