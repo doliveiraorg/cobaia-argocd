@@ -12,10 +12,10 @@ spec:
       repoURL: https://github.com/doliveiraorg/cobaia-argocd.git
       revision: HEAD
       directories:
-      - path: apps/billing/envs/*
+      - path: appsets/apps/billing/envs/*
   template:
     metadata:
-      name: '{{index .path.segments 1}}-{{.path.basename}}'
+      name: '{{index .path.segments 2}}-{{.path.basename}}'
     spec:
       project: default
       source:
