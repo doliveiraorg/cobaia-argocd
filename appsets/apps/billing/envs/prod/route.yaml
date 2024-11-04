@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: billing-prod
+  name: billing-prod
+spec:
+  host: billing-prod-default.apps.diolivei.vmware.tamlab.rdu2.redhat.com
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: billing-prod
+    weight: 100
+  wildcardPolicy: None
