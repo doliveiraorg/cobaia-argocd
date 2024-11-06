@@ -2,18 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: billing-qa
-  name: billing-qa
+    app: billing
+  name: billing
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: billing-qa
+      app: billing
+  strategy: {}
   template:
     metadata:
       labels:
-        app: billing-qa
+        app: billing
     spec:
+      serviceAccountName: billing
       containers:
-      - image: quay.io/fedora/httpd-24-micro
+      - image: argoproj/rollouts-demo:blue
         name: httpd-24-micro

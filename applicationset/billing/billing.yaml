@@ -16,6 +16,8 @@ spec:
   template:
     metadata:
       name: '{{index .path.segments 1}}-{{.path.basename}}'
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       project: default
       source:
@@ -23,7 +25,7 @@ spec:
         targetRevision: HEAD
         path: 'applicationset/billing/envs/{{ .path.basename }}'
       destination:
-        server: https://kubernetes.default.svc
+        name: local-cluster
         namespace: '{{index .path.segments 1}}-{{.path.basename}}'
       syncPolicy:
         syncOptions:

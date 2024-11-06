@@ -4,8 +4,8 @@ metadata:
   annotations:
     openshift.io/host.generated: "true"
   labels:
-    app: billing-prod
-  name: billing-prod
+    app: billing
+  name: billing
 spec:
   host: billing-prod-default.apps.diolivei.vmware.tamlab.rdu2.redhat.com
   port:
@@ -14,6 +14,6 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: billing-prod
+    name: billing
     weight: 100
   wildcardPolicy: None
