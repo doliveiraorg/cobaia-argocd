@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-generator-ex1
+  namespace: openshift-gitops
+spec:
+  generators:
+  - clusters: {}
+  template:
+    metadata:
+      name: '{{name}}-application'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/doliveiraorg/cobaia-argocd.git
+        revision: HEAD
+        path: 'applicationset/cluster-generator/envs/{{ .path.basename }}'
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        name: "{{ name }}"
+        namespace: diolivei-test
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
