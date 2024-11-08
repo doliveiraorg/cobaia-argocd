@@ -23,6 +23,6 @@ version: 1.0.0
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
 dependencies:
-- name: helm-demo
+- name: demo
   version: 1.0.0
   repository: https://doliveiraorg.github.io/helm_demo/repo
