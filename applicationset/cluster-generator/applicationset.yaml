@@ -8,7 +8,7 @@ spec:
   - clusters: {}
   template:
     metadata:
-      name: '{{name}}-application'
+      name: 'foo-{{name}}-application'
     spec:
       project: default
       source:
@@ -19,7 +19,7 @@ spec:
           valueFiles:
             - applicationset/cluster-generator/envs/{{name}}/values.yaml
       destination:
-        name: "{{ name }}"
+        name: '{{name}}'
         namespace: diolivei-test
       syncPolicy:
         automated:
