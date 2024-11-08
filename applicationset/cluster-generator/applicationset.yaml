@@ -14,10 +14,10 @@ spec:
       source:
         repoURL: https://github.com/doliveiraorg/cobaia-argocd.git
         revision: HEAD
-        path: 'applicationset/cluster-generator/envs/{{ .path.basename }}'
+        path: 'applicationset/cluster-generator/envs/{{name}}'
         helm:
           valueFiles:
-            - values.yaml
+            - applicationset/cluster-generator/envs/{{name}}/values.yaml
       destination:
         name: "{{ name }}"
         namespace: diolivei-test
