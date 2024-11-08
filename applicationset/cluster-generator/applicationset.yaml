@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-generator-ex1
+  name: foo-cluster-generator
   namespace: openshift-gitops
 spec:
   generators:
@@ -17,7 +17,7 @@ spec:
         path: 'applicationset/cluster-generator/envs/{{name}}'
         helm:
           valueFiles:
-            - applicationset/cluster-generator/envs/{{name}}/values.yaml
+            - values.yaml
       destination:
         name: '{{name}}'
         namespace: diolivei-test
