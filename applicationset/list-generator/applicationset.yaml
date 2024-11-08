@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bar-list-generator
+  namespace: openshift-gitops
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: local
+        url: https://kubernetes.default.svc
+        path: directoryOfmanifests
+      - cluster: external
+        url: https://192.168.64.93:6443
+        path: helm/nginx
+  template:
+    metadata:
+      name: 'foo-{{name}}-application'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/doliveiraorg/cobaia-argocd.git
+        revision: HEAD
+        path: 'applicationset/cluster-generator/envs/{{name}}'
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        name: '{{name}}'
+        namespace: diolivei-test
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
